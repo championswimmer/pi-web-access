@@ -61,7 +61,12 @@ export async function queryGeminiApiWithVideo(
 	options: GeminiApiOptions = {},
 ): Promise<string> {
 	const apiKey = getApiKey();
-	if (!apiKey) throw new Error("GEMINI_API_KEY not configured");
+	if (!apiKey) {
+		throw new Error(
+			`Gemini API key not configured. Set "geminiApiKey" in ${CONFIG_PATH} or set GEMINI_API_KEY.\n` +
+			`If both are set, ${CONFIG_PATH} takes precedence.`
+		);
+	}
 
 	const model = options.model ?? DEFAULT_MODEL;
 	const signal = withTimeout(options.signal, options.timeoutMs ?? 120000);

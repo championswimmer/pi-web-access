@@ -38,7 +38,7 @@ Works immediately with no API keys — Exa MCP provides zero-config search. For 
 }
 ```
 
-The same API keys can also be provided via `EXA_API_KEY`, `PERPLEXITY_API_KEY`, and `GEMINI_API_KEY`. If both config and env vars are set, the values in `~/.pi/web-search.json` win.
+The same API keys can also be provided via `EXA_API_KEY`, `PERPLEXITY_API_KEY`, and `GEMINI_API_KEY`. If both config and env vars are set, `~/.pi/web-search.json` takes precedence.
 
 In `auto` mode (default), `web_search` tries Exa first (direct API if keyed, MCP if not), then Perplexity, then Gemini API, then Gemini Web.
 
