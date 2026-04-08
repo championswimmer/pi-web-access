@@ -64,7 +64,7 @@ function normalizeApiKey(value: unknown): string | null {
 
 function getApiKey(): string {
 	const config = loadConfig();
-	const key = normalizeApiKey(process.env.PERPLEXITY_API_KEY) ?? normalizeApiKey(config.perplexityApiKey);
+	const key = normalizeApiKey(config.perplexityApiKey) ?? normalizeApiKey(process.env.PERPLEXITY_API_KEY);
 	if (!key) {
 		throw new Error(
 			"Perplexity API key not found. Either:\n" +
@@ -101,7 +101,7 @@ function validateDomainFilter(domains: string[]): string[] {
 
 export function isPerplexityAvailable(): boolean {
 	const config = loadConfig();
-	return !!(normalizeApiKey(process.env.PERPLEXITY_API_KEY) ?? normalizeApiKey(config.perplexityApiKey));
+	return !!(normalizeApiKey(config.perplexityApiKey) ?? normalizeApiKey(process.env.PERPLEXITY_API_KEY));
 }
 
 export async function searchWithPerplexity(query: string, options: SearchOptions = {}): Promise<SearchResponse> {

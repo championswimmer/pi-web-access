@@ -41,7 +41,7 @@ function normalizeApiKey(value: unknown): string | null {
 }
 
 export function getApiKey(): string | null {
-	return normalizeApiKey(process.env.GEMINI_API_KEY) ?? normalizeApiKey(loadConfig().geminiApiKey);
+	return normalizeApiKey(loadConfig().geminiApiKey) ?? normalizeApiKey(process.env.GEMINI_API_KEY);
 }
 
 export function isGeminiApiAvailable(): boolean {

@@ -86,7 +86,7 @@ function normalizeApiKey(value: unknown): string | null {
 }
 
 function getApiKey(): string | null {
-	return normalizeApiKey(process.env.EXA_API_KEY) ?? normalizeApiKey(loadConfig().exaApiKey);
+	return normalizeApiKey(loadConfig().exaApiKey) ?? normalizeApiKey(process.env.EXA_API_KEY);
 }
 
 function getCurrentMonth(): string {
