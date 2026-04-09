@@ -119,7 +119,8 @@ export async function search(query: string, options: FullSearchOptions = {}): Pr
 		if (result) return { ...result, provider: "gemini" };
 		throw new Error(
 			"Gemini search unavailable. Either:\n" +
-			"  1. Set GEMINI_API_KEY in ~/.pi/web-search.json\n" +
+			`  1. Set "geminiApiKey" in ${CONFIG_PATH} or set GEMINI_API_KEY\n` +
+			`     (${CONFIG_PATH} takes precedence when both are set)\n` +
 			"  2. Sign into gemini.google.com in a supported Chromium-based browser"
 		);
 	}
@@ -182,9 +183,10 @@ export async function search(query: string, options: FullSearchOptions = {}): Pr
 
 	throw new Error(
 		"No search provider available. Either:\n" +
-		"  1. Set perplexityApiKey in ~/.pi/web-search.json\n" +
-		"  2. Set EXA_API_KEY (or exaApiKey) in ~/.pi/web-search.json\n" +
-		"  3. Set GEMINI_API_KEY in ~/.pi/web-search.json\n" +
+		`  1. Set "perplexityApiKey" in ${CONFIG_PATH} or set PERPLEXITY_API_KEY\n` +
+		`  2. Set "exaApiKey" in ${CONFIG_PATH} or set EXA_API_KEY\n` +
+		`  3. Set "geminiApiKey" in ${CONFIG_PATH} or set GEMINI_API_KEY\n` +
+		`     (${CONFIG_PATH} takes precedence when both are set)\n` +
 		"  4. Sign into gemini.google.com in a supported Chromium-based browser"
 	);
 }
